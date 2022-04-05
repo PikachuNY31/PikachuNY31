@@ -1,3 +1,12 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"]
+  "presets": [
+    ["@babel/preset-env", 
+      {
+				// need the following code to avoid the import regenerator-runtime/runtime issue
+				"targets": {
+					"node": "current" // the target node version, boolean true, or "current".
+				}
+			}
+    ],
+    "@babel/preset-react"]
 }
