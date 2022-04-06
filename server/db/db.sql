@@ -71,7 +71,7 @@ const userlogin = {
     isAuthenticated: true,
     userName: 'pikachu',
     email: 'pika@gmail.com',
-    name: 'Michael',
+    name: 'Ash',
 }
 
 const usercart = [
