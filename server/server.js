@@ -15,10 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // require routers
+console.log(path.resolve(__dirname, '../client/index.html'));
 
 app.get('/', (req, res) => {
-  res.sendStatus(200);
-})
+  // return res
+  //   .status(200)
+  //   .setHeader('Content-Type', 'text/html')
+  //   .sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
 app.get('/store/main', (req, res) => {
   res.status(200).json({
@@ -76,7 +80,7 @@ app.use((err, req, res, next) => {
 
 
 
-const PORT = 3000;
+const PORT = 3001;
 
 app.listen(PORT, () => {
   console.log('================================ \n');

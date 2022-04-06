@@ -42,6 +42,7 @@ module.exports = {
       },
     ],
   },
+  mode: 'development', 
   // configure any plugins for development mode
   plugins: [
     new HtmlWebpackPlugin({
@@ -50,6 +51,13 @@ module.exports = {
     }),
   ],
   devServer: {
+    host: 'localhost',
+    port:8080,
+    hot: true,
+    static: {
+      directory: path.resolve(__dirname, 'build/build.js'), //"/build" './client/index.js'
+      publicPath: '/',
+    },
     // its where the bundle.js will live on RAM during development?
     static: {
       publicPath: '/build',
@@ -63,25 +71,25 @@ module.exports = {
     // }
     proxy: {
       // for API request in schemas generations in URIinput component
-      '/api/*': {
-        target: 'http://localhost:3000/',
+      '/': {
+        target: 'http://localhost:3001/',
         secure: false,
       },
       // for managing the saved queries
-      '/schemas/*': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
+      // '/schemas/*': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
       // for managing the user's front page content
-      '/user/*': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
+      // '/user/*': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
       // for managing the output from GraphQl results
-      '/output/*': {
-        target: 'http://localhost:3000/',
-        secure: false,
-      },
+      // '/output/*': {
+      //   target: 'http://localhost:3000/',
+      //   secure: false,
+      // },
     },
   },
   // Enable importing JS / JSX files without specifying their extension
