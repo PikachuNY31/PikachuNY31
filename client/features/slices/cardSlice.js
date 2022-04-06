@@ -42,6 +42,12 @@ export const cardSlice = createSlice({
 // 	}
 // )
 
+export const testStoreMainFetch = () => {
+  return fetch('http://localhost:3000/store/main')
+    .then(result => result.json())
+    .catch(err => err);
+};
+
 // Action creators are generated for each case reducer function
 // export const { syncCards } = cardSlice.actions
 
