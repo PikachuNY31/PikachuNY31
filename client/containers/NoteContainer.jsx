@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { getCards } from '../features/slices/cardSlice'
+import { getCards } from '../features/slices/cardSlice'
 import NoteCard from '../components/NoteCard';
 
 function NoteContainer() {
 
     const cards = useSelector((state) => state.cards);
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const [noteCards, setNoteCards] = useState([]);
 
     console.log('cards', cards);
     useEffect(() => {
-        // dispatch(getCards());
+        dispatch(getCards());
         const cardHolder = [];
         cards.forEach(card => {
             cardHolder.push(<NoteCard name={card.note_title} description={card.description} price={card.price} />);

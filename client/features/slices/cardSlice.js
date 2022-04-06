@@ -16,15 +16,17 @@ export const cardSlice = createSlice({
 export const getCards = createAsyncThunk(
   '/cards/getCards',
   
-  async () => {
-    try {
-      const response = await fetch('http://localhost:3000/store/main');
-      const formattedResponse = await response.json();
-
-      return formattedResponse.data.notesForSale;
-    } catch (e) {
-      console.log(e);
-    }
+  () => {
+    
+      const response = Promise.resolve(fetch('http://localhost:3000/notes',
+      {method: 'GET', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      }},))
+        .then(data => data.json())
+      console.log('this is the response in cardSlice : ', response)
+      return response.data;
+    
   }
 )
 
